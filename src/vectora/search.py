@@ -73,7 +73,6 @@ class SearxSearch:
                 return f"Search retrieval failed: {e}"
 
             results = data.get("results", [])[:max_results]
-            print(results)
             if not results:
                 return "No search results found."
 
