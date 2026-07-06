@@ -124,8 +124,7 @@ Returns extracted text from top search results as a single string.
 
 - The search pipeline depends on SearxNG returning JSON at /search?format=json.
 - search=True is intended for answer augmentation, not as a standalone browser replacement.
-- The package uses nest_asyncio so the search client can run both inside and outside an active event loop.
-
+- The synchronous `search()` method uses `asyncio.run()`. When calling from asynchronous code, use `search_async()` instead.
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for the full text.
