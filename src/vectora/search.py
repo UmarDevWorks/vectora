@@ -94,18 +94,4 @@ class SearxSearch:
 
     # Main function called by .agent
     def search(self, query: str, max_results: int = 3) -> str:
-
-        try:
-            # Check if there is an active running event loop
-            loop = asyncio.get_running_loop()
-        except RuntimeError:
-            return asyncio.run(self.search_async(query, max_results))
-
-        # If a loop is already running, run the coroutine in that thread/loop context
-        if loop.is_running():
-            import nest_asyncio
-
-            nest_asyncio.apply()
-            return loop.run_until_complete(self.search_async(query, max_results))
-        else:
-            return loop.run_until_complete(self.search_async(query, max_results))
+        return asyncio.run(self.search_async(query, max_results))
